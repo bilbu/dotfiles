@@ -11,4 +11,7 @@
   lg = !"git lg2"
   llg = log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   l = log --oneline --graph --all --decorate
+	bav = branch -a -vv
+[pull]
+	rebase = true
 

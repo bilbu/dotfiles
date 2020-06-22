@@ -1,6 +1,7 @@
 [user]
 	name = 
 	email = 
+	signingkey = 
 #[http]
 #	sslVerify = false
 [color]
@@ -14,4 +15,5 @@
 	bav = branch -a -vv
 [pull]
 	rebase = true
-
+[commit]
+	gpgsign = true

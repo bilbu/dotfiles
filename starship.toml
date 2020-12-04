@@ -1,0 +1,37 @@
+add_newline = false
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+
+[git_state]
+progress_divider = " of "
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ ×${count}"
+behind = "🐢 ×${count}"
+diverged = "🔱 ⇡${ahead_count}⇣${behind_count}"
+untracked = "🛤️ ×${count}"
+stashed = "📦 ×${count}"
+modified = "📝×${count}"
+staged = "🗃️ ×${count}"
+renamed = "📛×${count}"
+deleted = "🗑️ ×${count}"
+
+[hostname]
+ssh_only = false
+
+[status]
+disabled = false
+symbol = "💣"
+
+[time]
+disabled = false
+format = "[$time](yellow) "
+utc_time_offset = "+2"
+
+[username]
+format = "[$user]($style) @ "
+show_always = true
+

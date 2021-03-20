@@ -13,7 +13,7 @@ if [ "$PS1" ]; then
     alias list='screen -list'
     alias grep='grep --color=always'
     alias wget='wget -v -S -U "1337 h4x0r rul3z"'
-    alias ipinfo="curl -fsSL https://ipapi.co/json"
+    alias ipinfo='_ipi() { curl -s https://ipapi.co/${1:-""}/json; unset -f _ipi; }; _ipi'
     alias f='_fmd() { find . -maxdepth ${1:-1}; unset -f _fmd; }; _fmd'
 
     # set a fancy prompt

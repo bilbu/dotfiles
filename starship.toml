@@ -4,9 +4,6 @@ add_newline = false
 truncation_length = 0
 truncate_to_repo = false
 
-[git_state]
-progress_divider = " of "
-
 [git_status]
 conflicted = "⚔️ "
 ahead = "🏎️ ×${count}"

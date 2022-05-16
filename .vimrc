@@ -105,3 +105,4 @@ set ignorecase          " Do case insensitive matching
 
 endif " if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
 set paste
+set cursorline

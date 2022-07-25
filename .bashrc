@@ -15,6 +15,7 @@ if [ "$PS1" ]; then
     alias wget='wget -v -S -U "1337 h4x0r rul3z"'
     alias ipinfo='_ipi() { curl -s https://ipapi.co/${1:-""}/json; unset -f _ipi; }; _ipi'
     alias f='_fmd() { find . -maxdepth ${1:-"1"}; unset -f _fmd; }; _fmd'
+    alias r='source ~/.bashrc'
 
     # set a fancy prompt
     #export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\$\[\033[0m\] "

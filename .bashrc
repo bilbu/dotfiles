@@ -4,7 +4,7 @@ if [ "$PS1" ]; then
     # enable color support of ls and also add handy aliases
     eval `dircolors`
     alias l='ls --color=auto -lsaF'
-    #alias df='pydf'
+    alias df='_pdf() { wpdf=$(which pydf 2>/dev/null) ; [ $? -eq 0 ] && c=${wpdf} || c=$(which df) ; $c ; unset -f _pdf ; }; _pdf'
     alias ll='ls -l'
     alias la='ls -A'
     alias dir='ls --color=auto --format=vertical'

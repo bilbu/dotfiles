@@ -17,6 +17,7 @@ if [ "$PS1" ]; then
     alias f='_fmd() { find . -maxdepth ${1:-"1"}; unset -f _fmd; }; _fmd'
     alias r='source ~/.bashrc'
     alias wifinfo='nmcli d w show-password'
+    alias cat='_cbat() { wb=$(which bat 2>/dev/null) ; [ $? -eq 0 ] && c=${wb} || c=$(which cat) ; $c $1 ; unset -f _cbat ; }; _cbat'
 
     # set a fancy prompt
     #export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\$\[\033[0m\] "

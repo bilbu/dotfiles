@@ -4,7 +4,6 @@ if [ "$PS1" ]; then
     # enable color support of ls and also add handy aliases
     eval `dircolors`
     alias l='ls --color=auto -lsaF'
-    alias df='_pdf() { wpdf=$(which pydf 2>/dev/null) ; [ $? -eq 0 ] && c=${wpdf} || c=$(which df) ; $c ; unset -f _pdf ; }; _pdf'
     alias ll='ls -l'
     alias la='ls -A'
     alias dir='ls --color=auto --format=vertical'
@@ -17,11 +16,15 @@ if [ "$PS1" ]; then
     alias f='_fmd() { find . -maxdepth ${1:-"1"}; unset -f _fmd; }; _fmd'
     alias r='source ~/.bashrc'
     alias wifinfo='nmcli d w show-password'
-    alias cat='_cbat() { wb=$(which bat 2>/dev/null) ; [ $? -eq 0 ] && c=${wb} || c=$(which cat) ; $c $1 ; unset -f _cbat ; }; _cbat'
     alias weatherinfo='_wi() { curl -s v2.wttr.in/${1:-""}; unset -f _wi; }; _wi' # TODO add https:// when they fix their certificate
 
     # set a fancy prompt
     export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\[\033[1;30m\] \$\[\033[0m\] "
+
+    # failsafe shadow some commands with more modern versions
+    alias df='_pydf() { wpydf=$(which pydf 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wpydf} || cmd=$(which df) ; $cmd ; unset -f _pydf ; }; _pydf'
+    alias cat='_bat() { wbat=$(which bat 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wbat} || cmd=$(which cat) ; $cmd $1 ; unset -f _bat ; }; _bat'
+    alias top='_btop() { wbtop=$(which btop 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wbtop} || cmd=$(which top) ; $cmd ; unset -f _btop ; }; _btop'
 fi
 
 # append to the .bash_history everytime session closes

@@ -2,7 +2,7 @@
 if [ "$PS1" ]; then
 
     # enable color support of ls and also add handy aliases
-    eval `dircolors`
+    eval $(dircolors)
     alias l='ls --color=auto -lsaF'
     alias ll='ls -l'
     alias la='ls -A'
@@ -22,9 +22,20 @@ if [ "$PS1" ]; then
     export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\[\033[1;30m\] \$\[\033[0m\] "
 
     # failsafe shadow some commands with more modern versions
-    alias df='_pydf() { wpydf=$(which pydf 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wpydf} || cmd=$(which df) ; $cmd ; unset -f _pydf ; }; _pydf'
-    alias cat='_bat() { wbat=$(which bat 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wbat} || cmd=$(which cat) ; $cmd $1 ; unset -f _bat ; }; _bat'
-    alias top='_btop() { wbtop=$(which btop 2>/dev/null) ; [ $? -eq 0 ] && cmd=${wbtop} || cmd=$(which top) ; $cmd ; unset -f _btop ; }; _btop'
+    function _shadow_cmd {
+        # $1: intended command
+        # $2: failsafe
+        # $3: args
+        which_cmd=$(which "$1" 2>/dev/null)
+        [ $? -eq 0 ] && cmd=${which_cmd} || cmd=$(which $2)
+
+        [ $# -eq 2 ] && $cmd || $cmd $3
+    }
+
+    alias df='_shadow_cmd pydf df'
+    alias cat='_shadow_cmd bat cat $1'
+    alias top='_shadow_cmd btop top'
+
 fi
 
 # append to the .bash_history everytime session closes

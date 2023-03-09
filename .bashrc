@@ -45,16 +45,26 @@ if [ "$PS1" ]; then
     alias top='_shadow_cmd btop top'                                              # see https://github.com/aristocratos/btop
     alias vi='_shadow_cmd nvim vi $1'                                             # see https://neovim.io/
 
-fi
+    shopt -s histappend # append to the .bash_history everytime session closes
 
-# append to the .bash_history everytime session closes
-shopt -s histappend
-HISTSIZE=9999999
-HISTFILESIZE=9999999
-# ignore commands starting with space and duplicates
-HISTCONTROL=ignoreboth
-HISTTIMEFORMAT='%F %T '
-# join multiline commands on one line
-shopt -s cmdhist
-# store history immediately
-PROMPT_COMMAND='history -a'
+    # can i haz infinite history plx?
+    HISTSIZE=9999999
+    HISTFILESIZE=9999999
+
+    HISTCONTROL=ignoreboth      # ignore commands starting with space and duplicates
+    HISTTIMEFORMAT='%F %T '     # civilised timestamp in Bash history
+    shopt -s cmdhist            # join multiline commands on one line
+    PROMPT_COMMAND='history -a' # store history immediately instead of on ^D
+
+    export EDITOR=vi      # inb4 vi Vs emacs war...
+    export GPG_TTY=$(tty) # see https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
+
+    # using starship as prompt? (https://starship.rs/)
+    if [ $(which "starship" 2>/dev/null) ]; then
+        # check starship.toml ;)
+        eval "$(starship init bash)"
+    else
+        # set a fancy prompt
+        export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\[\033[1;30m\] \$\[\033[0m\] "
+    fi
+fi

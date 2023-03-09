@@ -26,7 +26,7 @@ if [ "$PS1" ]; then
     alias f='_fmd() { find . -maxdepth ${1:-"1"}; unset -f _fmd; }; _fmd'
     alias r='source ~/.bashrc' # remember this one
     alias wifinfo='nmcli d w show-password'
-    alias weatherinfo='_wi() { curl -s v2.wttr.in/${1:-""}; unset -f _wi; }; _wi' # TODO add https:// when they fix their certificate
+    alias weatherinfo='_wi() { curl -s https://v2.wttr.in/${1:-""}; unset -f _wi; }; _wi'
 
     # set a fancy prompt
     export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\[\033[1;30m\] \$\[\033[0m\] "

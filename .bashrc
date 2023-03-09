@@ -1,3 +1,13 @@
+###############################################################################
+#                                                                             #
+# A hacky .bashrc with some bells and whistles.                               #
+#                                                                             #
+# /!\ Not shellcheck friendly.                                                #
+#                                                                             #
+# Does not come with batteries but is meant to be as forgivable as possible.  #
+#                                                                             #
+###############################################################################
+
 # If running interactively, then:
 if [ "$PS1" ]; then
 
@@ -8,13 +18,13 @@ if [ "$PS1" ]; then
     alias la='ls -A'
     alias dir='ls --color=auto --format=vertical'
     alias vdir='ls --color=auto --format=long'
-    alias ms='echo Moule Shot !!!'
+    alias ms='echo "Moule Shot !!!"'
     alias list='screen -list'
     alias grep='grep --color=always'
     alias wget='wget -v -S -U "1337 h4x0r rul3z"'
     alias ipinfo='_ipi() { curl -s https://ipapi.co/${1:-""}/json; unset -f _ipi; }; _ipi'
     alias f='_fmd() { find . -maxdepth ${1:-"1"}; unset -f _fmd; }; _fmd'
-    alias r='source ~/.bashrc'
+    alias r='source ~/.bashrc' # remember this one
     alias wifinfo='nmcli d w show-password'
     alias weatherinfo='_wi() { curl -s v2.wttr.in/${1:-""}; unset -f _wi; }; _wi' # TODO add https:// when they fix their certificate
 

@@ -13,7 +13,7 @@ if [ "$PS1" ]; then
 
     # enable color support of ls and also add handy aliases
     eval $(dircolors)
-    alias l='ls --color=auto -lsaF'
+    # alias l='ls --color=auto -lsaF'
     alias ll='ls -l'
     alias la='ls -A'
     alias dir='ls --color=auto --format=vertical'
@@ -28,13 +28,10 @@ if [ "$PS1" ]; then
     alias wifinfo='nmcli d w show-password'
     alias weatherinfo='_wi() { curl -s https://v2.wttr.in/${1:-""}; unset -f _wi; }; _wi'
 
-    # set a fancy prompt
-    export PS1="\[\033[0;37m\]\t \[\033[1;30m\][\[\033[1;34m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h\[\033[1;30m\]] \[\033[0;36m\]\w\[\033[1;30m\] \$\[\033[0m\] "
-
-    # failsafe shadow some commands with more modern versions
+    # "failsafely" shadow some commands with more modern versions of them
     function _shadow_cmd {
-        # $1: intended command
-        # $2: failsafe
+        # $1: modern command
+        # $2: failsafe command
         # $3: args
         which_cmd=$(which "$1" 2>/dev/null)
         [ $? -eq 0 ] && cmd=${which_cmd} || cmd=$(which $2)
@@ -42,9 +39,11 @@ if [ "$PS1" ]; then
         [ $# -eq 2 ] && $cmd || $cmd $3
     }
 
-    alias df='_shadow_cmd pydf df'
-    alias cat='_shadow_cmd bat cat $1'
-    alias top='_shadow_cmd btop top'
+    alias l='_shadow_cmd exa ls "-lFahuUmg --icons --octal-permissions --git" $1' # see https://the.exa.website/
+    alias df='_shadow_cmd pydf df'                                                # see https://pypi.org/project/pydf/
+    alias cat='_shadow_cmd bat cat $1'                                            # see https://github.com/sharkdp/bat
+    alias top='_shadow_cmd btop top'                                              # see https://github.com/aristocratos/btop
+    alias vi='_shadow_cmd nvim vi $1'                                             # see https://neovim.io/
 
 fi
 

@@ -10,17 +10,22 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-set ai
 set smartindent
 set smarttab
-set bs=2
+"set backspace=2
 " set encoding=iso-8859-15
-set enc=utf-8
-set nu
-" set nowrap
+set encoding=utf-8
+set number
+set nowrap
+
+" Set theme and background transparency
 colorscheme torte
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
 set laststatus=2
-set vb t_vb=
+set visualbell t_vb=
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set showmode
 set showcmd
 set ttyfast
@@ -31,6 +36,7 @@ if version>=508
                        " for all use mouse=a
                        " (use shift+click to  get old cut/paste behavior)
 endif
+
 set fileformats=unix   " I want to see those ^M if I'm editing a dos file.
                        " See below (Key Mappings) for ^M removal!
 " Removes those bloody ^M's
@@ -41,6 +47,7 @@ fun RmCR()
 endfun
 map <F5> :call RmCR()<CR>
 
+set pastetoggle=<F2>
 
 " modeline into a file) (override default value of 5)
 set modelines=0
@@ -51,7 +58,7 @@ set modelines=0
 set backspace=indent,eol,start  " more powerful backspacing
 
 " Now we set some defaults for the editor
-set autoindent         " always set autoindenting on
+set autoindent          " always set autoindenting on
 set textwidth=0         " Don't wrap words by default
 set nobackup            " Don't keep a backup file
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more than
@@ -63,46 +70,5 @@ set ruler               " show the cursor position all the time
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-
-" We know xterm-debian is a color terminal
-if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  set t_Co=32
-  set t_Sf=
-  set t_Sb=
-
-" Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-syntax on
-
-" Debian uses compressed helpfiles. We must inform vim that the main
-" helpfiles is compressed. Other helpfiles are stated in the tags-file.
-set helpfile=$VIMRUNTIME/doc/help.txt.gz
-
-if has("autocmd")
- " Enabled file type detection
- " Use the default filetype settings. If you also want to load indent files
- " to automatically do language-dependent indenting add 'indent' as well.
- filetype plugin on
-
-endif " has ("autocmd")
-
-" Some Debian-specific things
-augroup filetype
-  au BufRead reportbug.*                set ft=mail
-  au BufRead reportbug-*                set ft=mail
-augroup END
-
-" The following are commented out as they cause vim to behave a lot
-" different from regular vi. They are highly recommended though.
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
-set ignorecase          " Do case insensitive matching
-"set incsearch          " Incremental search
-"set autowrite          " Automatically save before commands like :next and :make
-
-endif " if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-set paste
 set cursorline
+set cursorcolumn

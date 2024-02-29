@@ -39,11 +39,11 @@ if [ "$PS1" ]; then
         [ $# -eq 2 ] && $cmd || $cmd $3
     }
 
-    alias l='_shadow_cmd exa ls "-lFahuUmg --icons --octal-permissions --git" $1' # see https://the.exa.website/
-    alias df='_shadow_cmd pydf df'                                                # see https://pypi.org/project/pydf/
-    alias cat='_shadow_cmd bat cat $1'                                            # see https://github.com/sharkdp/bat
-    alias top='_shadow_cmd btop top'                                              # see https://github.com/aristocratos/btop
-    alias vi='_shadow_cmd nvim vi $1'                                             # see https://neovim.io/
+    alias l='_shadow_cmd eza ls "-lahuUmg --icons --octal-permissions --git" $1' # see https://the.exa.website/
+    alias df='_shadow_cmd pydf df'                                               # see https://pypi.org/project/pydf/
+    alias cat='_shadow_cmd bat cat $1'                                           # see https://github.com/sharkdp/bat
+    alias top='_shadow_cmd btop top'                                             # see https://github.com/aristocratos/btop
+    alias vi='_shadow_cmd nvim vi $1'                                            # see https://neovim.io/
 
     shopt -s histappend # append to the .bash_history everytime session closes
 

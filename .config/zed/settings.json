@@ -1,0 +1,86 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "default_model": {
+      "provider": "",
+      "model": ""
+    },
+    "version": ""
+  },
+  "autosave": "on_focus_change",
+  "buffer_font_size": 15,
+  "cursor_shape": "block",
+  "git": {
+    "inline_blame": {
+      "min_column": 81,
+      "show_commit_summary": true
+    }
+  },
+  "indent_guides": {
+    "active_line_width": 2
+  },
+  "inlay_hints": {
+    // Global switch to toggle hints on and off, switched off by default.
+    "enabled": true,
+    "show_background": true
+  },
+  "journal": {
+    "hour_format": "hour24"
+  },
+  "languages": {
+    "JSON": {
+      "tab_size": 2
+    },
+    "JSONC": {
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "cargotom": {
+      "initialization_options": {
+        "offline": false,
+        "stable": false,
+        "per_page_web": 50
+      }
+    },
+    "rust-analyzer": {
+      // These initialization options are merged into Zed's defaults
+      "initialization_options": {
+        "check": {
+          "command": "clippy" // rust-analyzer.check.command (default: "check")
+        }
+      }
+    }
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "tab_size": 4,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "terminal": {
+    "blinking": "on",
+    "copy_on_select": true,
+    "line_height": "standard"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Terafox"
+  },
+  "ui_font_size": 17,
+  "wrap_guides": [80]
+}
